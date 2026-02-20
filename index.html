@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HVAC Profit Diagnostic | System Reach</title>
+    <meta name="description" content="Find out what you should actually charge per hour. Free diagnostic for HVAC business owners.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0A2342;
+            --orange: #F47B20;
+            --orange-hover: #E06A10;
+            --white: #FFFFFF;
+            --off-white: #F5F5F5;
+            --text: #1A1A1A;
+            --text-light: #555555;
+            --text-muted: #888888;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .hero { background: var(--navy); padding: 80px 24px 72px; text-align: center; }
+        .hero-inner { max-width: 720px; margin: 0 auto; }
+        .hero-badge { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--orange); margin-bottom: 24px; }
+        .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 20px; }
+        .hero p { font-size: clamp(16px, 2.5vw, 20px); color: rgba(255,255,255,0.8); font-weight: 400; max-width: 600px; margin: 0 auto 36px; line-height: 1.5; }
+        .hero-cta { display: inline-block; background: var(--orange); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; padding: 16px 40px; border: none; border-radius: 6px; text-decoration: none; cursor: pointer; transition: background 0.2s; }
+        .hero-cta:hover { background: var(--orange-hover); }
+        .problem { padding: 72px 24px; background: var(--white); }
+        .problem-inner { max-width: 680px; margin: 0 auto; }
+        .problem h2 { font-size: clamp(24px, 4vw, 32px); font-weight: 800; color: var(--navy); margin-bottom: 28px; line-height: 1.2; }
+        .problem p { font-size: 17px; color: var(--text); margin-bottom: 20px; line-height: 1.7; }
+        .stat-callout { background: var(--off-white); border-left: 4px solid var(--orange); padding: 20px 24px; margin: 32px 0; border-radius: 0 6px 6px 0; }
+        .stat-callout p { font-size: 18px; font-weight: 600; color: var(--navy); margin-bottom: 0; }
+        .what-you-get { padding: 72px 24px; background: var(--off-white); }
+        .what-you-get-inner { max-width: 800px; margin: 0 auto; }
+        .what-you-get h2 { font-size: clamp(24px, 4vw, 32px); font-weight: 800; color: var(--navy); margin-bottom: 16px; text-align: center; }
+        .section-sub { text-align: center; font-size: 17px; color: var(--text-light); margin-bottom: 48px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+        @media (max-width: 640px) { .features { grid-template-columns: 1fr; gap: 24px; } }
+        .feature { text-align: center; padding: 32px 20px; background: var(--white); border-radius: 8px; }
+        .feature-icon { width: 56px; height: 56px; background: var(--navy); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+        .feature-icon svg { width: 28px; height: 28px; stroke: var(--orange); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .feature h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+        .feature p { font-size: 14px; color: var(--text-light); line-height: 1.5; }
+        .how-it-works { padding: 72px 24px; background: var(--white); }
+        .how-inner { max-width: 680px; margin: 0 auto; }
+        .how-it-works h2 { font-size: clamp(24px, 4vw, 32px); font-weight: 800; color: var(--navy); margin-bottom: 40px; text-align: center; }
+        .steps { display: flex; flex-direction: column; gap: 28px; }
+        .step { display: flex; align-items: flex-start; gap: 20px; }
+        .step-num { flex-shrink: 0; width: 44px; height: 44px; background: var(--navy); color: var(--orange); font-size: 18px; font-weight: 800; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .step-content h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+        .step-content p { font-size: 15px; color: var(--text-light); line-height: 1.5; }
+        .form-section { padding: 72px 24px; background: var(--navy); text-align: center; }
+        .form-inner { max-width: 520px; margin: 0 auto; }
+        .form-section h2 { font-size: clamp(24px, 4vw, 32px); font-weight: 800; color: var(--white); margin-bottom: 12px; }
+        .form-section p { font-size: 17px; color: rgba(255,255,255,0.7); margin-bottom: 32px; }
+        .email-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto 16px; }
+        @media (max-width: 520px) { .email-form { flex-direction: column; } }
+        .email-form input[type="email"] { flex: 1; padding: 16px 20px; font-family: 'Montserrat', sans-serif; font-size: 16px; border: 2px solid rgba(255,255,255,0.2); border-radius: 6px; background: rgba(255,255,255,0.08); color: var(--white); outline: none; transition: border-color 0.2s; }
+        .email-form input[type="email"]::placeholder { color: rgba(255,255,255,0.4); }
+        .email-form input[type="email"]:focus { border-color: var(--orange); }
+        .email-form button { padding: 16px 32px; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; background: var(--orange); color: var(--white); border: none; border-radius: 6px; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+        .email-form button:hover { background: var(--orange-hover); }
+        .email-form button:disabled { opacity: 0.7; cursor: not-allowed; }
+        .form-note { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 12px; }
+        .form-error { color: #FF6B6B; font-size: 14px; margin-top: 8px; display: none; }
+        .form-success { display: none; }
+        .form-success h3 { font-size: 24px; font-weight: 700; color: var(--orange); margin-bottom: 8px; }
+        .form-success p { font-size: 16px; color: rgba(255,255,255,0.8); }
+        .testimonials { padding: 72px 24px; background: var(--off-white); display: none; }
+        .testimonials-inner { max-width: 800px; margin: 0 auto; }
+        .testimonials h2 { font-size: clamp(24px, 4vw, 28px); font-weight: 800; color: var(--navy); margin-bottom: 40px; text-align: center; }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        @media (max-width: 640px) { .testimonial-grid { grid-template-columns: 1fr; } }
+        .testimonial { background: var(--white); padding: 28px; border-radius: 8px; border-top: 3px solid var(--orange); }
+        .testimonial p { font-size: 15px; color: var(--text); line-height: 1.6; margin-bottom: 16px; font-style: italic; }
+        .testimonial .attribution { font-size: 14px; font-weight: 700; color: var(--navy); font-style: normal; }
+        .footer { padding: 40px 24px; background: var(--navy); text-align: center; border-top: 1px solid rgba(255,255,255,0.08); }
+        .footer p { font-size: 13px; color: rgba(255,255,255,0.35); }
+        .footer .tagline { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badge">Free HVAC Pricing Diagnostic</div>
+            <h1>What should you actually charge per hour?</h1>
+            <p>Most HVAC owners are undercharging by 15-30%. This free diagnostic shows you the exact gap in 3 minutes.</p>
+            <a href="#get-diagnostic" class="hero-cta">Send Me the Diagnostic</a>
+        </div>
+    </section>
+    <section class="problem">
+        <div class="problem-inner">
+            <h2>Nobody taught you how to price your work.</h2>
+            <p>You started your HVAC business because you're great at the work. So you looked at what the guy down the street charges, added a few bucks, and called it your rate.</p>
+            <p>That was years ago. Your overhead has gone up. Your insurance has gone up. Your truck payments have gone up. Your rate? Barely moved.</p>
+            <div class="stat-callout">
+                <p>The average HVAC owner doing $300K-$500K in revenue is leaving $80,000-$150,000 per year on the table. Not because they're bad at HVAC. Because they've never calculated what it actually costs to put a truck on the road for an hour.</p>
+            </div>
+            <p>You don't have a revenue problem. You have a pricing problem. And it's costing you more every month you don't fix it.</p>
+        </div>
+    </section>
+    <section class="what-you-get">
+        <div class="what-you-get-inner">
+            <h2>What the diagnostic tells you</h2>
+            <p class="section-sub">Plug in four numbers you already know. The spreadsheet does the rest.</p>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                    <h3>Your true cost per hour</h3>
+                    <p>What it actually costs you to run a tech for one billable hour, after every hidden expense.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                    <h3>What you should charge</h3>
+                    <p>Your minimum hourly rate to hit 50% gross profit. The number top-performing shops actually target.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+                    <h3>Your annual gap</h3>
+                    <p>The specific dollar amount you're leaving on the table every year at your current rate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="how-it-works">
+        <div class="how-inner">
+            <h2>How it works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-content"><h3>Enter your email below</h3><p>You'll get the diagnostic link in your inbox within 2 minutes.</p></div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-content"><h3>Plug in 4 numbers</h3><p>Tech hourly pay, monthly overhead, crew size, and your current rate. Nothing you don't already know.</p></div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-content"><h3>See the gap</h3><p>The spreadsheet calculates your true cost, your minimum rate, and exactly how much you're losing per year. Most owners find a gap of $15-40 per billable hour.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials">
+        <div class="testimonials-inner">
+            <h2>What owners are saying</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial"><p>"I ran this during lunch on Tuesday. By Friday I had repriced three jobs and added $2,200 in margin I would have given away."</p><div class="attribution">-- Name, City, ST</div></div>
+                <div class="testimonial"><p>"Placeholder for second testimonial."</p><div class="attribution">-- Name, City, ST</div></div>
+            </div>
+        </div>
+    </section>
+    <section class="form-section" id="get-diagnostic">
+        <div class="form-inner">
+            <h2>Get your free diagnostic</h2>
+            <p>Enter your email and you'll have it in your inbox in 2 minutes. Plus a short email series showing you how to close the gap.</p>
+            <div id="form-container">
+                <form class="email-form" id="diagnostic-form">
+                    <input type="email" id="email-input" placeholder="Your best email" required autocomplete="email">
+                    <button type="submit" id="submit-btn">Send It</button>
+                </form>
+                <div class="form-error" id="form-error"></div>
+                <p class="form-note">No spam. No daily emails. Unsubscribe anytime.</p>
+            </div>
+            <div class="form-success" id="form-success">
+                <h3>Check your inbox.</h3>
+                <p>Your diagnostic is on the way. If you don't see it in 2-3 minutes, check your spam folder.</p>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <p class="tagline">System Reach &mdash; You mastered the trade. Now master the business.</p>
+        <p>&copy; 2026 System Reach. All rights reserved.</p>
+    </footer>
+    <script>
+        const form=document.getElementById('diagnostic-form'),emailInput=document.getElementById('email-input'),submitBtn=document.getElementById('submit-btn'),formError=document.getElementById('form-error'),formContainer=document.getElementById('form-container'),formSuccess=document.getElementById('form-success');
+        form.addEventListener('submit',async function(e){e.preventDefault();formError.style.display='none';const email=emailInput.value.trim();if(!email)return;submitBtn.disabled=true;submitBtn.textContent='Sending...';try{const response=await fetch('/.netlify/functions/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email})});if(!response.ok)throw new Error('Something went wrong. Please try again.');formContainer.style.display='none';formSuccess.style.display='block';setTimeout(function(){window.location.href='/thank-you.html';},2000);}catch(err){formError.textContent=err.message||'Something went wrong. Please try again.';formError.style.display='block';submitBtn.disabled=false;submitBtn.textContent='Send It';}});
+        document.querySelector('.hero-cta').addEventListener('click',function(e){e.preventDefault();document.getElementById('get-diagnostic').scrollIntoView({behavior:'smooth'});});
+    </script>
+</body>
+</html>
